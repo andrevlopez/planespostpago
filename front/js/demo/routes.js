@@ -46,34 +46,6 @@ angular
       label: 'Social Buttons'
     }
   })
-  .state('app.components.cards', {
-    url: '/cards',
-    templateUrl: 'views/components/cards.html',
-    ncyBreadcrumb: {
-      label: 'Cards'
-    }
-  })
-  .state('app.components.forms', {
-    url: '/forms',
-    templateUrl: 'views/components/forms.html',
-    ncyBreadcrumb: {
-      label: 'Forms'
-    }
-  })
-  .state('app.components.switches', {
-    url: '/switches',
-    templateUrl: 'views/components/switches.html',
-    ncyBreadcrumb: {
-      label: 'Switches'
-    }
-  })
-  .state('app.components.tables', {
-    url: '/tables',
-    templateUrl: 'views/components/tables.html',
-    ncyBreadcrumb: {
-      label: 'Tables'
-    }
-  })
   .state('app.forms', {
     url: '/forms',
     templateUrl: 'views/forms.html',
@@ -118,30 +90,6 @@ angular
         // you can lazy load controllers
         return $ocLazyLoad.load({
           files: ['js/controllers/widgets.js']
-        });
-      }]
-    }
-  })
-  .state('app.charts', {
-    url: '/charts',
-    templateUrl: 'views/charts.html',
-    ncyBreadcrumb: {
-      label: 'Charts'
-    },
-    resolve: {
-      // Plugins loaded before
-      // loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
-      //     return $ocLazyLoad.load([
-      //         {
-      //             serial: true,
-      //             files: ['js/libs/Chart.min.js', 'js/libs/angular-chart.min.js']
-      //         }
-      //     ]);
-      // }],
-      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-        // you can lazy load files for an existing module
-        return $ocLazyLoad.load({
-          files: ['js/controllers/charts.js']
         });
       }]
     }
