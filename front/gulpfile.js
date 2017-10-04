@@ -13,7 +13,7 @@ var runSequence = require('run-sequence');
 var replace = require('gulp-replace');
 
 gulp.paths = {
-    dist: 'dist',
+    dist: '../dist',
 };
 
 var paths = gulp.paths;

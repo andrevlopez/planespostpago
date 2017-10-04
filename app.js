@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // view engine setup
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'ejs')
-app.use('/', express.static('public'));
+app.use('/', express.static('dist'));
 require('./routes/index')(app);
 require('./routes/users')(app, connection);
 require('./routes/solicitudes')(app, connection);
