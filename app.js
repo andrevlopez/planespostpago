@@ -10,11 +10,11 @@ const mysql = require('mysql');
 var app = express();
 
 var connection = mysql.createConnection({
-  host     : 'sl-us-south-1-portal.7.dblayer.com',
-  port: 22970,
-  user     : 'admin',
-  password : 'WGDCDYPJKWYODIHR',
-  database : 'compose'
+  host     : 'v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+  port: 3306,
+  user     : 'fobnc7zhk24bxs5j',
+  password : 'r34e80zgeoohv03f',
+  database : 'ym8eb0mkoif9bfy1'
 });
 
 connection.connect(function(error) {
