@@ -29,7 +29,21 @@ angular
     abstract: true,
     template: '<ui-view></ui-view>',
     ncyBreadcrumb: {
-      label: 'Components'
+      label: 'Secciones'
+    }
+  })
+  .state('app.components.solNuevas', {
+    url: "/solicitudes/nuevas",
+    templateUrl: 'views/panel/nuevaSolicitud.html',
+    ncyBreadcrumb: {
+      label: 'Solicitudes Nuevas'
+    }
+  })
+  .state('app.components.solRealizadas', {
+    url: "/solicitudes/realizadas",
+    templateUrl: 'views/panel/solRealizadas.html',
+    ncyBreadcrumb: {
+      label: 'Solicitudes Realizadas'
     }
   })
   .state('app.components.buttons', {
