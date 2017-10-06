@@ -1,0 +1,24 @@
+<div>
+	<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>Código de Solicitud</th>
+      <th>Fecha</th>
+      <th>Correo</th>
+      <th>Número Telefónico</th>
+      <th>Plan Solicitado</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in con.solNuevas">
+      <td>{{item.codigo}}</td>
+      <td>{{item.fecha}}</td>
+      <td>{{item.correoUsuario}}</td>
+      <td>{{item.telefono}}</td>
+      <td>{{item.planSolicitado}}</td>
+      <td><span class="badge badge-info">Nueva</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
