@@ -101,7 +101,7 @@ angular
   })
 
   // Additional Pages
-  .state('appSimple.login', {
+  .state('login', {
     url: '/login',
     templateUrl: 'views/pages/login.html'
   })
