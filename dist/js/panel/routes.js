@@ -46,18 +46,18 @@ angular
       label: 'Solicitudes Realizadas'
     }
   })
-  .state('app.components.buttons', {
-    url: '/buttons',
-    templateUrl: 'views/components/buttons.html',
+  .state('app.components.listaUsuarios', {
+    url: '/usuarios/lista',
+    templateUrl: 'views/panel/listaUsuarios.html',
     ncyBreadcrumb: {
-      label: 'Buttons'
+      label: 'Lista de Usuarios'
     }
   })
-  .state('app.components.social-buttons', {
-    url: '/social-buttons',
-    templateUrl: 'views/components/social-buttons.html',
+  .state('app.components.nuevoUsuario', {
+    url: '/usuarios/nuevo',
+    templateUrl: 'views/panel/nuevoUsuario.html',
     ncyBreadcrumb: {
-      label: 'Social Buttons'
+      label: 'Nuevo Usuario'
     }
   })
   .state('app.forms', {

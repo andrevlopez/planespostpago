@@ -81,29 +81,18 @@ angular
       }]
     }
   })
-  .state('appSimple', {
-    abstract: true,
-    templateUrl: 'views/common/layouts/simple.html',
-    resolve: {
-      loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
-        // you can lazy load files for an existing module
-        return $ocLazyLoad.load([{
-          serie: true,
-          name: 'Font Awesome',
-          files: ['css/font-awesome.min.css']
-        },{
-          serie: true,
-          name: 'Simple Line Icons',
-          files: ['css/simple-line-icons.css']
-        }]);
-      }],
-    }
-  })
-
   // Additional Pages
   .state('login', {
     url: '/login',
     templateUrl: 'views/pages/login.html'
+  })
+  .state('app.error', {
+    url: '/error',
+    templateUrl: 'views/pages/error.html'
+  })
+  .state('app.success', {
+    url: '/success',
+    templateUrl: 'views/pages/success.html'
   })
   .state('appSimple.register', {
     url: '/register',

@@ -17,4 +17,10 @@ function panel($http, $state) {
 	.then(function(response) {
       vm.solNuevas = response.data;
 	});
+
+	$http.get(URLBASE + '/usuarios')
+	.then(function(response) {
+      vm.listaUsuarios = response.data;
+	});
+
 }
