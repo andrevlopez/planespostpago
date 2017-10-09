@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn" ng-controller="nuevoUsuario as new">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -11,7 +11,7 @@
                             <label class="form-control-label" for="prependedInput">Nombre</label>
                             <div class="controls">
                                 <div class="input-prepend input-group">
-                                    <input id="prependedInput" class="form-control" size="16" type="text">
+                                    <input ng-model="new.nombre" id="prependedInput" class="form-control" size="16" type="text">
                                 </div>
                             </div>
                         </div>
@@ -19,7 +19,7 @@
                             <label class="form-control-label" for="prependedInput">Apellido</label>
                             <div class="controls">
                                 <div class="input-prepend input-group">
-                                    <input id="prependedInput" class="form-control" size="16" type="text">
+                                    <input ng-model="new.apellido" id="prependedInput" class="form-control" size="16" type="text">
                                 </div>
                             </div>
                         </div>
@@ -27,8 +27,9 @@
                             <label class="form-control-label" for="prependedInput">Nombre de usuario</label>
                             <div class="controls">
                                 <div class="input-prepend input-group">
-                                    <input id="prependedInput" class="form-control" size="16" type="text">
+                                    <input  ng-model="new.username" id="prependedInput" class="form-control" size="16" type="text">
                                 </div>
+                                <small>El nombre de usuario debe contener solo minusculas y numeros</small>
                             </div>
                         </div>
                         <div class="form-group">
@@ -38,7 +39,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-envelope-o"></i>
                                     </span>
-                                    <input id="appendedPrependedInput" class="form-control" size="16" type="text">
+                                    <input ng-model="new.email" type="email" id="appendedPrependedInput" class="form-control" size="16">
                                 </div>
                             </div>
                         </div>
@@ -46,29 +47,35 @@
                             <label class="form-control-label" for="appendedInputButton">Contraseña</label>
                             <div class="controls">
                                 <div class="input-group">
-                                    <input id="appendedInputButton" class="form-control" size="16" type="text">
+                                    <input ng-model="new.password" id="appendedInputButton" class="form-control" size="16" type="text">
                                 </div>
+                                <small>Usa una contraseña segura con mas de 5 caracteres.</small>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="appendedInputButtons">Repite la contraseña</label>
                             <div class="controls">
                                 <div class="input-group">
-                                    <input id="appendedInputButtons" size="16" class="form-control" type="text">
+                                    <input ng-model="new.password2" id="appendedInputButtons" size="16" class="form-control" type="text">
                                 </div>
+                                <small class="text-danger" ng-if="new.password !== new.password2">Las contraseñas no coinciden.</small>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="appendedInputButtons">Cargo</label>
                             <div class="controls">
                                 <div class="input-group">
-                                    <input id="appendedInputButtons" size="16" class="form-control" type="text">
+                                    <select ng-model="new.cargo" class="form-control">
+                                        <option value="call-center">Call Center</option>
+                                        <option value="supervisor">Supervisor</option>
+                                        <option value="super-usuario">Super Usuario</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-success">Guardar cambios</button>
-                            <button class="btn btn-secondary" type="button">Cancel</button>
+                            <button ng-disabled="!new.nombre || new.password !== new.password || !new.cargo || !new.username || !new.email" ng-click="new.save();" type="submit" class="btn btn-success">Guardar cambios</button>
+                            <button ng-click="new.clear();" class="btn btn-secondary" type="button">Cancel</button>
                         </div>
                     </form>
                 </div>
