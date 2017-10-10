@@ -15,12 +15,13 @@ module.exports = (app, con) => {
   });
 
   app.post('/registroUsuario', (req, res) => {
+    const query = `SELECT * FROM usuarios WHERE usuario = '${req.body.usuario}' OR email = '${req.body.email}';`
     con.query(query, (err, row) => {
        if (err) {
-        res.send({error: 'Error en base de datos. Intenta mas tarde.'})
+        res.send({error: err})
        }
-       if (row) {
-          if(row.correo == req.body.email && row.usuario == req.body.username) {
+       if (row.length > 0) {
+          if(row.correo == req.body.email && row.usuario == req.body.usuario) {
             res.send({error: 'Correo y nombre de usuario estan registrados'});
           } else if (row.correo == req.body.email) {
             res.send({error: 'El correo ya esta registrado.'});

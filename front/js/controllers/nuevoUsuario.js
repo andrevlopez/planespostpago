@@ -16,7 +16,7 @@ function nuevoUsuario($http, $state) {
   };
 
   vm.save = () => {
-    $http.post('/registroUsuario', {
+    $http.post(URLBASE+'/registroUsuario', {
       usuario: vm.username,
       password: vm.password,
       nombre: vm.nombre,
