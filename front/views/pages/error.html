@@ -1,1 +1,5 @@
-<p>Error</p>
+<div ng-controller="error as e">
+	<h1 class="text-center">Ha ocurrido un error:</h1>
+	<p class="text-center text-danger">{{e.msg || 'Vuelve a intentarlo'}}</p>
+	<button class="btn btn-primary" ng-click="e.home()">Volver al inicio</button>
+</div>

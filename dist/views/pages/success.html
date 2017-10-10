@@ -1,1 +1,5 @@
-<p>Exito</p>
+<div ng-controller="success as s">
+	<h1 class="text-center">Operación exitosa</h1>
+	<p class="text-center text-success">{{s.msg}}</p>
+	<button class="btn btn-primary" ng-click="s.home()">Volver al inicio</button>
+</div>

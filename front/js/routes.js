@@ -88,11 +88,17 @@ angular
   })
   .state('app.error', {
     url: '/error',
-    templateUrl: 'views/pages/error.html'
+    templateUrl: 'views/pages/error.html',
+    params: {
+      error: null
+    }
   })
   .state('app.success', {
     url: '/success',
-    templateUrl: 'views/pages/success.html'
+    templateUrl: 'views/pages/success.html',
+    params: {
+      success: null
+    }
   })
   .state('appSimple.register', {
     url: '/register',
