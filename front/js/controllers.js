@@ -10,6 +10,10 @@ function panel($http, $state) {
 	vm.edit = [];
 	let session = sessionStorage.getItem('session');
 
+	function resetEdit() {
+	  vm.edit.forEach((e,i)=>vm.edit[i] = false);
+	}
+
 	setTimeout(()=> {
        session?true:$state.go('login');
 	}, 500);
@@ -35,10 +39,14 @@ function panel($http, $state) {
               apellido: vm.listaUsuarios[i].apellido,
               cargo: vm.listaUsuarios[i].cargo,
               email: vm.listaUsuarios[i].email
-        	});
+        	}).then(res=>console.log(res.data));
         }
-      }).then(()=> {
-      	$state.go('app.success');
-      });
+      })
+      $state.go('app.success');
+      resetEdit();
+	};
+
+	vm.cancelForms = () => {
+      resetEdit();
 	};
 }

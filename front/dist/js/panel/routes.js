@@ -60,6 +60,13 @@ angular
       label: 'Nuevo Usuario'
     }
   })
+  .state('app.components.editarUsuario', {
+    url: '/usuarios/editar',
+    templateUrl: 'views/panel/editarUsuario.html',
+    ncyBreadcrumb: {
+      label: 'Editar Usuario'
+    }
+  })
   .state('app.forms', {
     url: '/forms',
     templateUrl: 'views/forms.html',
