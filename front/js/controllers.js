@@ -7,11 +7,12 @@ const URLBASE = 'https://planespostpago.herokuapp.com';
 
 function panel($http, $state) {
 	var vm = this;
+	vm.edit = [];
 	let session = sessionStorage.getItem('session');
 
 	setTimeout(()=> {
        session?true:$state.go('login');
-	}, 1000);
+	}, 500);
 
 	$http.get(URLBASE + '/solicitudes')
 	.then(function(response) {
@@ -23,4 +24,21 @@ function panel($http, $state) {
       vm.listaUsuarios = response.data;
 	});
 
+	vm.editarCampo = i => vm.edit[i] = true;
+
+	vm.updateUser = () => {
+      vm.edit.forEach((e,i) => {
+        if (e) {
+        	$http.put(URLBASE+'/usuarios', {
+        	  id: vm.listaUsuarios[i].id,
+              nombre: vm.listaUsuarios[i].nombre,
+              apellido: vm.listaUsuarios[i].apellido,
+              cargo: vm.listaUsuarios[i].cargo,
+              email: vm.listaUsuarios[i].email
+        	});
+        }
+      }).then(()=> {
+      	$state.go('app.success');
+      });
+	};
 }

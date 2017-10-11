@@ -78,4 +78,17 @@ module.exports = (app, con) => {
     }, true );
   });
 
+  app.put('/usuarios', (req, res) => {
+    crud.update(con, {
+      table: 'usuarios',
+      where: {id:req.body.id},
+      values: req.body
+    }, (err, row) => {
+      if (err) {
+        res.send(err);
+      }
+      res.send(row);
+    }, true );
+  });
+
 }

@@ -1,0 +1,31 @@
+<div>
+  <table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo</th>
+      <th>Cargo</th>
+      <th>Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in con.listaUsuarios">
+      <td><input class="form-control" ng-disabled="!con.edit[$index]" type="text" value="{{item.nombre}}"/></td>
+      <td><input class="form-control" ng-disabled="!con.edit[$index]" type="text" value="{{item.apellido}}"/></td>
+      <td><input class="form-control" ng-disabled="!con.edit[$index]" type="text" value="{{item.email}}"/></td>
+      <td>
+        <select ng-disabled="!con.edit[$index]" class="form-control">
+          <option value="{{item.cargo}}">{{item.cargo}}</option>
+          <option value="call-center">Call Center</option>
+          <option value="supervisor">Supervisor</option>
+          <option value="super-usuario">Super Usuario</option>
+        </select>
+      </td>
+      <td><button class="btn" ng-click="con.editarCampo($index);">Editar</button></td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-success" ng-disabled="con.edit.length == 0" ng-click="con.updateUser();">Guardar Cambios</button>
+<button class="btn btn-primary">Cancelar</button>
+</div>
