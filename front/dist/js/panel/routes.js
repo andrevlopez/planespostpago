@@ -67,6 +67,13 @@ angular
       label: 'Editar Usuario'
     }
   })
+  .state('app.components.eliminarUsuario', {
+    url: '/usuarios/eliminar',
+    templateUrl: 'views/panel/eliminarUsuario.html',
+    ncyBreadcrumb: {
+      label: 'Eliminar Usuario'
+    }
+  })
   .state('app.forms', {
     url: '/forms',
     templateUrl: 'views/forms.html',

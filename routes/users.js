@@ -66,7 +66,8 @@ module.exports = (app, con) => {
     }, true );
   });
 
-  app.delete('/usuarios', (req, res) => {
+  app.post('/deleteUsuario', (req, res) => {
+    console.log(req.body);
     crud.delete(con, {
       from: 'usuarios',
       where: {id:req.body.id}
@@ -90,5 +91,4 @@ module.exports = (app, con) => {
       res.send(row);
     }, true );
   });
-
 }

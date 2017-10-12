@@ -1,0 +1,24 @@
+<div>
+  <table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo</th>
+      <th>Cargo</th>
+      <th>Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in con.listaUsuarios">
+      <td>{{item.nombre}}</td>
+      <td>{{item.apellido}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.cargo}}</td>
+      <td><button class="btn" ng-click="con.eliminarUsuario($index)">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>
+  <button class="btn btn-success" ng-disabled="con.listaUsuarios.length === con.numLista" ng-click="con.sendDelete();">Guardar Cambios</button>
+  <button class="btn btn-primary" ng-click="con.resetEliminar();">Cancelar</button>
+</div>
