@@ -26,7 +26,7 @@ function nuevoPlan($http, $state) {
       // Envia los datos aqui
       vm.csvData.forEach(element => {
         console.log(element);
-        $http.post('http://localhost:5000'+'/nuevoPlan', {
+        $http.post(URLBASE+'/nuevoPlan', {
           tipoPlan: element.tipoPlan,
           nombrePlan: element.nombrePlan,
           contratoPlan: element.contratoPlan,
@@ -44,9 +44,8 @@ function nuevoPlan($http, $state) {
       });
       $state.go('app.success');
     };
-
     vm.cancel = () => {
-
+      $state.go('app.main');
     };
   };
 };
