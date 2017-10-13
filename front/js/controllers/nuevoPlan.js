@@ -44,9 +44,7 @@ function nuevoPlan($http, $state) {
       });
       $state.go('app.success');
     };
-
     vm.cancel = () => {
-
     };
   };
 };
