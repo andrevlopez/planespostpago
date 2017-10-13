@@ -1,7 +1,7 @@
 <div class="animated fadeIn" ng-controller="nuevoUsuario as new">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card">
+            <form name="Form" class="card">
                 <div class="card-header">
                     <i class="fa fa-edit"></i>Nuevo usuario
                 </div>
@@ -29,7 +29,7 @@
                                 <div class="input-prepend input-group">
                                     <input  ng-model="new.username" id="prependedInput" class="form-control" size="16" type="text">
                                 </div>
-                                <small>El nombre de usuario debe contener solo minusculas y numeros</small>
+                                <small>El nombre de usuario debe contener sólo minúsculas y números</small>
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,21 +42,22 @@
                                     <input ng-model="new.email" type="email" id="appendedPrependedInput" class="form-control" size="16">
                                 </div>
                             </div>
+                            <small ng-if="Form.$error.email" class="text-danger">Usa un correo válido</small>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="appendedInputButton">Contraseña</label>
                             <div class="controls">
                                 <div class="input-group">
-                                    <input ng-model="new.password" id="appendedInputButton" class="form-control" size="16" type="text">
+                                    <input ng-model="new.password" id="appendedInputButton" class="form-control" size="16" type="password">
                                 </div>
-                                <small>Usa una contraseña segura con mas de 5 caracteres.</small>
+                                <small>La contraseña debe contener más de 5 caracteres.</small>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="appendedInputButtons">Repite la contraseña</label>
                             <div class="controls">
                                 <div class="input-group">
-                                    <input ng-model="new.password2" id="appendedInputButtons" size="16" class="form-control" type="text">
+                                    <input ng-model="new.password2" id="appendedInputButtons" size="16" class="form-control" type="password">
                                 </div>
                                 <small class="text-danger" ng-if="new.password !== new.password2">Las contraseñas no coinciden.</small>
                             </div>
@@ -75,11 +76,11 @@
                         </div>
                         <div class="form-actions">
                             <button ng-disabled="!new.nombre || new.password !== new.password || !new.cargo || !new.username || !new.email" ng-click="new.save();" type="submit" class="btn btn-success">Guardar cambios</button>
-                            <button ng-click="new.clear();" class="btn btn-secondary" type="button">Cancel</button>
+                            <button ng-click="new.clear();" class="btn btn-secondary" type="button">Cancelar</button>
                         </div>
                     </form>
                 </div>
-            </div>
+            </form>
         </div>
         <!--/.col-->
     </div>

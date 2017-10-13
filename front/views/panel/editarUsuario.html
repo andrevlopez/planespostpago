@@ -6,7 +6,7 @@
       <th>Apellido</th>
       <th>Correo</th>
       <th>Cargo</th>
-      <th>Accion</th>
+      <th>Acción</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +26,6 @@
     </tr>
   </tbody>
 </table>
-<button class="btn btn-success" ng-disabled="con.edit.length === 0" ng-click="con.updateUser();">Guardar Cambios</button>
+<button class="btn btn-success" ng-disabled="con.edit.length === 0 && !Form.$dirty" ng-click="con.updateUser();">Guardar Cambios</button>
 <button class="btn btn-primary" ng-click="con.cancelForms()">Cancelar</button>
 </div>

@@ -21,9 +21,9 @@ module.exports = (app, con) => {
         res.send({error: err})
        }
        if (row.length > 0) {
-          if(row.correo == req.body.email && row.usuario == req.body.usuario) {
+          if(row.email == req.body.email && row[0].usuario == req.body.usuario) {
             res.send({error: 'Correo y nombre de usuario estan registrados'});
-          } else if (row.correo == req.body.email) {
+          } else if (row[0].email == req.body.email) {
             res.send({error: 'El correo ya esta registrado.'});
           } else {
             res.send({error: 'El nombre de usuario ya esta registrado.'});
@@ -39,7 +39,7 @@ module.exports = (app, con) => {
             res.send(row);
           }, true);
        }
-    });
+    }, true);
   });
 
   app.get('/usuarios', (req, res) => {

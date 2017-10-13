@@ -45,6 +45,7 @@ require('./routes/index')(app);
 require('./routes/users')(app, connection);
 require('./routes/solicitudes')(app, connection);
 require('./routes/permisos')(app, connection);
+require('./routes/planes')(app, connection);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

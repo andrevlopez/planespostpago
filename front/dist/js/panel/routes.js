@@ -10,13 +10,6 @@ angular
       label: 'Icons'
     }
   })
-  .state('app.icons.fontawesome', {
-    url: '/font-awesome',
-    templateUrl: 'views/icons/font-awesome.html',
-    ncyBreadcrumb: {
-      label: 'Font Awesome'
-    }
-  })
   .state('app.icons.simplelineicons', {
     url: '/simple-line-icons',
     templateUrl: 'views/icons/simple-line-icons.html',
@@ -72,6 +65,13 @@ angular
     templateUrl: 'views/panel/eliminarUsuario.html',
     ncyBreadcrumb: {
       label: 'Eliminar Usuario'
+    }
+  })
+  .state('app.components.nuevoPlan', {
+    url: '/usuarios/planes/nuevo',
+    templateUrl: 'views/panel/nuevoPlan.html',
+    ncyBreadcrumb: {
+      label: 'Nuevo Plan'
     }
   })
   .state('app.forms', {
