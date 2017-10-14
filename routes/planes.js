@@ -25,7 +25,7 @@ module.exports = (app, con) => {
     }, true );
   });
 
-  app.delete('/planes', (req, res) => {
+  app.post('/deletePlan', (req, res) => {
     crud.delete(con, {
       from: 'planesYtelefonias',
       where: {id:req.body.id}

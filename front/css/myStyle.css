@@ -1,0 +1,4 @@
+.expandible:hover {
+	width: 250px;
+	transition: 200ms ease-in all;
+}

@@ -2,21 +2,6 @@ angular
 .module('app')
 .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
   $stateProvider
-  .state('app.icons', {
-    url: "/icons",
-    abstract: true,
-    template: '<ui-view></ui-view>',
-    ncyBreadcrumb: {
-      label: 'Icons'
-    }
-  })
-  .state('app.icons.simplelineicons', {
-    url: '/simple-line-icons',
-    templateUrl: 'views/icons/simple-line-icons.html',
-    ncyBreadcrumb: {
-      label: 'Simple Line Icons'
-    }
-  })
   .state('app.components', {
     url: "/components",
     abstract: true,
@@ -72,6 +57,27 @@ angular
     templateUrl: 'views/panel/nuevoPlan.html',
     ncyBreadcrumb: {
       label: 'Nuevo Plan'
+    }
+  })
+  .state('app.components.listaPlanes', {
+    url: '/usuarios/planes/lista',
+    templateUrl: 'views/panel/listaPlanes.html',
+    ncyBreadcrumb: {
+      label: 'Lista de Planes'
+    }
+  })
+  .state('app.components.editarPlanes', {
+    url: '/usuarios/planes/editar',
+    templateUrl: 'views/panel/editarPlanes.html',
+    ncyBreadcrumb: {
+      label: 'Editar Planes'
+    }
+  })
+  .state('app.components.eliminarPlanes', {
+    url: '/usuarios/planes/eliminar',
+    templateUrl: 'views/panel/eliminarPlanes.html',
+    ncyBreadcrumb: {
+      label: 'Eliminar Planes'
     }
   })
   .state('app.forms', {

@@ -1,0 +1,42 @@
+<div>
+  <table class="table">
+    <thead class="thead-default">
+      <tr>
+        <th>Tipo</th>
+        <th>Nombre</th>
+        <th>Contrato</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Imagen</th>
+        <th>Precio Equipo</th>
+        <th>Precio Plan</th>
+        <th>Minutos</th>
+        <th>Datos</th>
+        <th>SMS</th>
+        <th>Redes Sociales Gratis</th>
+        <th>Oferta</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in con.listaPlanes">
+        <td>{{item.tipoPlan}}</td>
+            <td>{{item.nombrePlan}}</td>
+            <td>{{item.contrato}}</td>
+            <td>{{item.marcaEquipo}}</td>
+            <td>{{item.modeloEquipo}}</td>
+            <td>{{item.enlaceImagen}}</td>
+            <td>{{item.precioEquipo}}</td>
+            <td>{{item.precioPlan}}</td>
+            <td>{{item.minutos}}</td>
+            <td>{{item.datos}}</td>
+            <td>{{item.sms}}</td>
+            <td>{{item.redesSociales}}</td>
+            <td>{{item.oferta}}</td>
+        <td><button class="btn" ng-click="con.eliminarPlan($index)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" ng-disabled="con.listaPlanes.length === con.numListaPlan" ng-click="con.sendDeletePlan();">Guardar Cambios</button>
+  <button class="btn btn-primary" ng-click="con.resetEliminarPlan();">Cancelar</button>
+</div>
