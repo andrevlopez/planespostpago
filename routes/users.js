@@ -68,7 +68,7 @@ module.exports = (app, con) => {
 
   app.post('/deleteUsuario', (req, res) => {
     crud.delete(con, {
-      from: 'planesYtelefonias',
+      from: 'usuarios',
       where: {id: req.body.id}
     }, (err, row) => {
         err?res.send(err):res.send(row);
