@@ -66,20 +66,6 @@ module.exports = (app, con) => {
     }, true );
   });
 
-  /*app.post('/deleteUsuario', (req, res) => {
-    console.log(req.body);
-    crud.delete(con, {
-      from: 'usuarios',
-      where: {id:req.body.id}
-    }, (err, row) => {
-      if (err) {
-        res.send(err);
-      }
-      res.send(row);
-    }, true );
-  });
-  */
-
   app.post('/deleteUsuario', (req, res) => {
     crud.delete(con, {
       from: 'planesYtelefonias',
