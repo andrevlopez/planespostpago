@@ -135,7 +135,7 @@ function panel($http, $state) {
 
   vm.sendDeletePlan = () => {
     vm.acumEliminarPlan.forEach(x => {
-      $http.post(URLBASE+'/deletePlan', {
+      $http.post('http://localhost:5000'+'/deletePlan', {
         id: x.id
       });
     });

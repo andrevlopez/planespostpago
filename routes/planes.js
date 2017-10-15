@@ -26,6 +26,7 @@ module.exports = (app, con) => {
   });
 
   app.post('/deletePlan', (req, res) => {
+    console.log(req.body);
     crud.delete(con, {
       from: 'planesYtelefonias',
       where: {id:req.body.id}
@@ -34,7 +35,7 @@ module.exports = (app, con) => {
         res.send(err);
       }
       res.send(row);
-    }, true );
+    }, true);
   });
 
   app.put('/planes', (req, res) => {
