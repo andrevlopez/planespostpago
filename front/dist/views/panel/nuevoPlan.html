@@ -1,6 +1,6 @@
 <div ng-controller="nuevoPlan as plan">
     <h3>Importar archivo</h3>
-	<input type="file" name="file" on-read-file="plan.showContent($fileContent)" class="form-control btn-success" accept=".csv"/>
+	<input type="file" name="file" on-read-file="plan.showContent($fileContent)" class="form-control col-5 container btn-primary" accept=".csv"/>
 	<div ng-if="plan.csvData">
       <small>Vista previa:</small>
       <table class="table table-sm">

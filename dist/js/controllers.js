@@ -74,11 +74,11 @@ function panel($http, $state) {
     console.log(vm.editPlan);
     vm.editPlan.forEach((e,i) => {
       if (e) {
-        $http.put(URLBASE+'/planes', {
+        const update = {
           id: vm.listaPlanes[i].id,
           tipoPlan: vm.listaPlanes[i].tipoPlan,
           nombrePlan: vm.listaPlanes[i].nombrePlan,
-          contrato: vm.listaPlanes[i].contrato,
+          contratoPlan: vm.listaPlanes[i].contrato,
           marcaEquipo: vm.listaPlanes[i].marcaEquipo,
           modeloEquipo: vm.listaPlanes[i].modeloEquipo,
           enlaceImagen: vm.listaPlanes[i].enlaceImagen,
@@ -89,7 +89,9 @@ function panel($http, $state) {
           sms: vm.listaPlanes[i].sms,
           redesSociales: vm.listaPlanes[i].redesSociales,
           oferta: vm.listaPlanes[i].ofertas
-        });
+        };
+        console.log(update);
+        $http.put(URLBASE+'/planes', update);
       }
     });
     $state.go('app.success');
