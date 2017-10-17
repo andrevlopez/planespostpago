@@ -43,6 +43,7 @@ function panel($http, $state) {
   function getListaPlanes() {
     $http.get(URLBASE+'/planes')
     .then(res => {
+      console.log(res.data);
       vm.listaPlanes = res.data;
     });
   }
@@ -78,7 +79,7 @@ function panel($http, $state) {
           id: vm.listaPlanes[i].id,
           tipoPlan: vm.listaPlanes[i].tipoPlan,
           nombrePlan: vm.listaPlanes[i].nombrePlan,
-          contratoPlan: vm.listaPlanes[i].contrato,
+          contratoPlan: vm.listaPlanes[i].contratoPlan,
           marcaEquipo: vm.listaPlanes[i].marcaEquipo,
           modeloEquipo: vm.listaPlanes[i].modeloEquipo,
           enlaceImagen: vm.listaPlanes[i].enlaceImagen,
@@ -90,7 +91,6 @@ function panel($http, $state) {
           redesSociales: vm.listaPlanes[i].redesSociales,
           oferta: vm.listaPlanes[i].ofertas
         };
-        console.log(update);
         $http.put(URLBASE+'/planes', update);
       }
     });

@@ -1,5 +1,5 @@
 <div>
-  <table class="table">
+  <table class="table table-sm">
     <thead class="thead-default">
       <tr>
         <th>Tipo</th>
@@ -22,9 +22,9 @@
       <tr ng-repeat="item in con.listaPlanes">
         <td><input class="form-control expandible" ng-hover ng-model="item.tipoPlan" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.tipoPlan}}"/></td>
         <td><input class="form-control expandible" ng-model="item.nombrePlan" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.nombrePlan}}"/></td>
-        <td><input class="form-control expandible" ng-model="item.contrato" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.contrato}}"/></td>
+        <td><input class="form-control expandible" ng-model="item.contratoPlan" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.contratoPlan}}"/></td>
+        <td><input class="form-control expandible" ng-model="item.marcaEquipo" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.marcaEquipo}}"/></td>
         <td><input class="form-control expandible" ng-model="item.modeloEquipo" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.modeloEquipo}}"/></td>
-        <td>
         <td><input class="form-control expandible" ng-model="item.enlaceImagen" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.enlaceImagen}}"/></td>
         <td><input class="form-control expandible" ng-model="item.precioEquipo" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.precioEquipo}}"/></td>
         <td><input class="form-control expandible" ng-model="item.precioPlan" ng-disabled="!con.editPlan[$index]" type="text" value="{{item.precioPlan}}"/></td>
