@@ -1,7 +1,7 @@
 // controller.js
 angular
 .module('app')
-.controller('nuevoPlan', ['$http', '$state', nuevoPlan]);
+.controller('nuevoPlan', ['$http', '$state', '$rootScope', nuevoPlan]);
 
 function nuevoPlan($http, $state) {
   let vm = this;

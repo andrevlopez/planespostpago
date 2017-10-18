@@ -1,7 +1,7 @@
 // controller.js
 angular
 .module('app')
-.controller('panel', ['$http', '$state', panel]);
+.controller('panel', ['$http', '$state','$rootScope', panel]);
 
 const URLBASE = 'https://planespostpago.herokuapp.com';
 
@@ -89,7 +89,7 @@ function panel($http, $state) {
           datos: vm.listaPlanes[i].datos,
           sms: vm.listaPlanes[i].sms,
           redesSociales: vm.listaPlanes[i].redesSociales,
-          oferta: vm.listaPlanes[i].ofertas
+          oferta: vm.listaPlanes[i].oferta
         };
         $http.put(URLBASE+'/planes', update);
       }
@@ -143,4 +143,8 @@ function panel($http, $state) {
     });
     $state.go('app.success');
   };
+  
+  vm.resetEd = () => {
+    getListaPlanes();
+  }
 }
