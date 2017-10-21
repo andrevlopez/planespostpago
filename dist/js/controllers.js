@@ -146,5 +146,10 @@ function panel($http, $state) {
   
   vm.resetEd = () => {
     getListaPlanes();
-  }
+  };
+
+  vm.logOff = () => {
+    sessionStorage.setItem('session', false);
+    $state.go('login');
+  };
 }

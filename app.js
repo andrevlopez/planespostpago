@@ -4,10 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var server = require('http').createServer();
 const cors = require('cors');
 const mysql = require('mysql');
 
 var app = express();
+var io = require('socket.io')(server);
 
 var connection = mysql.createConnection({
   host     : 'v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
@@ -47,6 +49,8 @@ require('./routes/solicitudes')(app, connection);
 require('./routes/permisos')(app, connection);
 require('./routes/planes')(app, connection);
 require('./routes/notificaciones')(app, connection);
+// Sockets
+require('./sockets')(io);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
