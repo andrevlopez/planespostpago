@@ -4,30 +4,17 @@
             <a tab class="nav-link active" data-toggle="tab" href="#timeline" role="tab"><i class="icon-list"></i></a>
         </li>
     </ul>
-
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="timeline" role="tabpanel">
-            <hr class="transparent mx-3 my-0">
-            <div class="callout callout-danger m-0 py-3">
-                <div><strong>Solicitudes: </strong>Se ha creado una nueva solicitud</div>
-                <small class="text-muted mr-3">11-12-2017 2pm</small>
+            <div ng-repeat="item in con.notificaciones">
+                <hr class="transparent mx-3 my-0">
+                <div class="callout callout-info m-0 py-3">
+                    <div><strong>{{item.tipo}}: </strong>{{item.detalles}}</div>
+                    <small class="text-muted mr-3">{{con.formatDate(item.fecha)}}</small>
+                </div>
+                <hr class="mx-3 my-0">
             </div>
-            <hr class="mx-3 my-0">
-            <div class="callout callout-danger m-0 py-3">
-                <div><strong>Planes, equipos y telefonias: </strong>Se ha editado un plan.</div>
-                <small class="text-muted mr-3">11-12-2017 2pm</small>
-            </div>
-            <hr class="mx-3 my-0"><div class="callout callout-danger m-0 py-3">
-                <div><strong>Planes, equipos y telefonias: </strong>Se ha agregado un nuevo plan</div>
-                <small class="text-muted mr-3">11-12-2017 2pm</small>
-            </div>
-            <hr class="mx-3 my-0">
-            <hr class="mx-3 my-0"><div class="callout callout-danger m-0 py-3">
-                <div><strong>Planes, equipos y telefonias: </strong>Se ha eliminado un plan.</div>
-                <small class="text-muted mr-3">11-12-2017 2pm</small>
-            </div>
-            <hr class="mx-3 my-0">
         </div>
     </div>
 </aside>

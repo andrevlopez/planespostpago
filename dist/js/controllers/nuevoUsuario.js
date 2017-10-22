@@ -27,6 +27,11 @@ function nuevoUsuario($http, $state) {
       if(response.data.error) {
         $state.go('app.error', {error: response.data.error});
       } else {
+        socket.emit('new-notification', {
+          tipo: 'Usuarios',
+          detalles: 'Se ha creado un nuevo usuario',
+          fecha: new Date()
+        });
         $state.go('app.success');
       }
     });

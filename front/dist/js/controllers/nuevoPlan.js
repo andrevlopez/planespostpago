@@ -42,6 +42,11 @@ function nuevoPlan($http, $state) {
           oferta: element.oferta
         });
       });
+      socket.emit('new-notification', {
+        tipo: 'Planes, equipos y telefonías',
+        detalles: 'Se ha agregado un nuevo plan',
+        fecha: new Date()
+      });
       $state.go('app.success');
     };
     vm.cancel = () => {

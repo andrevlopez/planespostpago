@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('demo:server');
 var http = require('http');
+const mysql = require('mysql');
 
 /**
  * Get port from environment and store in Express.
@@ -14,12 +15,36 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
-
 /**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
+var io = require('socket.io')(server);
+
+
+var connection = mysql.createConnection({
+  host     : 'v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+  port: 3306,
+  user     : 'fobnc7zhk24bxs5j',
+  password : 'r34e80zgeoohv03f',
+  database : 'ym8eb0mkoif9bfy1'
+});
+
+connection.connect(function(error) {
+  if(error) {
+    console.log(error);
+  } else {
+    console.log('Conectado Exitosamente');
+  }
+});
+
+require('../sockets')(io, connection);
+require('../routes/users')(app, connection);
+require('../routes/solicitudes')(app, connection);
+require('../routes/permisos')(app, connection);
+require('../routes/planes')(app, connection);
+require('../routes/notificaciones')(app, connection);
 
 /**
  * Listen on provided port, on all network interfaces.

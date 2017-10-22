@@ -4,6 +4,7 @@ angular
 .controller('panel', ['$http', '$state','$rootScope', panel]);
 
 const URLBASE = 'https://planespostpago.herokuapp.com';
+var socket = io(URLBASE);
 
 function panel($http, $state) {
 	var vm = this;
@@ -11,6 +12,7 @@ function panel($http, $state) {
   vm.editPlan = [];
 	vm.acumEliminar = [];
   vm.acumEliminarPlan = [];
+  vm.acumNoVistas = 0;
 	let session = sessionStorage.getItem('session');
 
 	function resetEdit() {
@@ -40,17 +42,29 @@ function panel($http, $state) {
 	  });
   }
 
+  function getNotificaciones() {
+    $http.get(URLBASE + '/notificaciones')
+    .then(res => {
+      vm.notificaciones = res.data.reverse();
+    });
+  }
+
   function getListaPlanes() {
     $http.get(URLBASE+'/planes')
     .then(res => {
-      console.log(res.data);
       vm.listaPlanes = res.data;
     });
   }
 
+  socket.on('broadcast-notification', ()=> {
+    vm.acumNoVistas += 1;
+    getNotificaciones();
+  });
+
   getSol();
   getListaUsuarios();
   getListaPlanes();
+  getNotificaciones();
 	
 	vm.editarCampo = i => vm.edit[i] = true;
   vm.editarCampoPlan = i => vm.editPlan[i] = true;
@@ -67,12 +81,16 @@ function panel($http, $state) {
         });
       }
     });
+    socket.emit('new-notification', {
+      tipo: 'Usuarios',
+      detalles: 'Se ha actualizado un usuario',
+      fecha: new Date()
+    });
     $state.go('app.success');
     resetEdit();
 	};
 
   vm.updatePlan = () => {
-    console.log(vm.editPlan);
     vm.editPlan.forEach((e,i) => {
       if (e) {
         const update = {
@@ -94,6 +112,11 @@ function panel($http, $state) {
         $http.put(URLBASE+'/planes', update);
       }
     });
+    socket.emit('new-notification', {
+      tipo: 'Planes, equipos y telefonías',
+      detalles: 'Se ha actualizado un plan',
+      fecha: new Date()
+    });
     $state.go('app.success');
     resetEditPlan();
   };
@@ -108,12 +131,12 @@ function panel($http, $state) {
 
 	vm.eliminarUsuario = i => {
 	  vm.acumEliminar.push(vm.listaUsuarios[i]);
-      vm.listaUsuarios.splice(i,1);
+    vm.listaUsuarios.splice(i,1);
 	};
 
   vm.eliminarPlan = i => {
     vm.acumEliminarPlan.push(vm.listaPlanes[i]);
-      vm.listaPlanes.splice(i,1);
+    vm.listaPlanes.splice(i,1);
   };
 
 	vm.resetEliminar = () => {
@@ -132,6 +155,11 @@ function panel($http, $state) {
         id: x.id
       });
     });
+    socket.emit('new-notification', {
+      tipo: 'Usuarios',
+      detalles: 'Se ha eliminado un usuario.',
+      fecha: new Date()
+    });
     $state.go('app.success');
   };
 
@@ -140,6 +168,11 @@ function panel($http, $state) {
       $http.post(URLBASE+'/deletePlan', {
         id: x.id
       });
+    });
+    socket.emit('new-notification', {
+      tipo: 'Planes, equipos y telefonías',
+      detalles: 'Se ha eliminado un plan',
+      fecha: new Date()
     });
     $state.go('app.success');
   };
@@ -151,5 +184,14 @@ function panel($http, $state) {
   vm.logOff = () => {
     sessionStorage.setItem('session', false);
     $state.go('login');
+  };
+
+  vm.formatDate = date => {
+    const fecha = new Date(date);
+    return `${fecha.getDate()}/${fecha.getMonth()}/${fecha.getFullYear()} ${fecha.getHours()}:${fecha.getMinutes()}`;
+  };
+
+  vm.resetCountNews = () => {
+    vm.acumNoVistas = 0;
   };
 }

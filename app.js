@@ -4,29 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var server = require('http').createServer();
 const cors = require('cors');
-const mysql = require('mysql');
 
 var app = express();
-var io = require('socket.io')(server);
-
-var connection = mysql.createConnection({
-  host     : 'v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-  port: 3306,
-  user     : 'fobnc7zhk24bxs5j',
-  password : 'r34e80zgeoohv03f',
-  database : 'ym8eb0mkoif9bfy1'
-});
-
-connection.connect(function(error) {
-  if(error) {
-    console.log(error);
-  } else {
-    console.log('Conectado Exitosamente');
-  }
-}); 
-
 
 app.use(cors());
 app.options('*', cors());
@@ -44,13 +24,7 @@ app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'ejs')
 app.use('/', express.static('dist'));
 require('./routes/index')(app);
-require('./routes/users')(app, connection);
-require('./routes/solicitudes')(app, connection);
-require('./routes/permisos')(app, connection);
-require('./routes/planes')(app, connection);
-require('./routes/notificaciones')(app, connection);
-// Sockets
-require('./sockets')(io);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
