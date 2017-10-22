@@ -4,7 +4,7 @@ angular
 .controller('panel', ['$http', '$state','$rootScope', panel]);
 
 const URLBASE = 'https://planespostpago.herokuapp.com';
-var socket = io(URLBASE);
+var socket = io('localhost:5000');
 
 function panel($http, $state) {
 	var vm = this;
