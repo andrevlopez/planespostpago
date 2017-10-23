@@ -47,6 +47,10 @@ function nuevoPlan($http, $state) {
         detalles: 'Se ha agregado un nuevo plan',
         fecha: new Date()
       });
+      var n = new Notification('Planes, equipos y telefonías', {
+        body: 'Se ha agregado un nuevo plan',
+        icon: ICONAPP
+      });
       $state.go('app.success');
     };
     vm.cancel = () => {

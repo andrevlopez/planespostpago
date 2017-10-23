@@ -4,6 +4,7 @@ angular
 .controller('panel', ['$http', '$state','$rootScope', panel]);
 
 const URLBASE = 'https://planespostpago.herokuapp.com';
+const ICONAPP = '../../img/icon.png';
 var socket = io('localhost:5000');
 
 function panel($http, $state) {
@@ -56,6 +57,20 @@ function panel($http, $state) {
     });
   }
 
+  function checkNotifications() {
+    if (!("Notification" in window)) {
+      console.error("Notifications aren't supported in this browser");
+    } else if (Notification.permission === "granted") {
+      var notification = new Notification("Las notificaciones push están activas.");
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission(per => {
+        if (per === 'granted') {
+          var notification = new Notification('Las notificaciones push han sido permitidas.')
+        }
+      });
+    }
+  }
+
   socket.on('broadcast-notification', ()=> {
     vm.acumNoVistas += 1;
     getNotificaciones();
@@ -65,6 +80,7 @@ function panel($http, $state) {
   getListaUsuarios();
   getListaPlanes();
   getNotificaciones();
+  checkNotifications();
 	
 	vm.editarCampo = i => vm.edit[i] = true;
   vm.editarCampoPlan = i => vm.editPlan[i] = true;
@@ -85,6 +101,10 @@ function panel($http, $state) {
       tipo: 'Usuarios',
       detalles: 'Se ha actualizado un usuario',
       fecha: new Date()
+    });
+    var n = new Notification('Usuarios', {
+      body: 'Se ha actualizado un plan',
+      icon: ICONAPP
     });
     $state.go('app.success');
     resetEdit();
@@ -116,6 +136,10 @@ function panel($http, $state) {
       tipo: 'Planes, equipos y telefonías',
       detalles: 'Se ha actualizado un plan',
       fecha: new Date()
+    });
+    var n = new Notification('Planes, equipos y telefonías', {
+      body: 'Se ha actualizado un plan',
+      icon: ICONAPP
     });
     $state.go('app.success');
     resetEditPlan();
@@ -160,6 +184,10 @@ function panel($http, $state) {
       detalles: 'Se ha eliminado un usuario.',
       fecha: new Date()
     });
+    var n = new Notification('Usuarios', {
+      body: 'Se ha eliminado un usuario',
+      icon: ICONAPP
+    });
     $state.go('app.success');
   };
 
@@ -173,6 +201,10 @@ function panel($http, $state) {
       tipo: 'Planes, equipos y telefonías',
       detalles: 'Se ha eliminado un plan',
       fecha: new Date()
+    });
+    var n = new Notification('Planes, equipos y telefonías', {
+      body: 'Se ha eliminado un plan',
+      icon: ICONAPP
     });
     $state.go('app.success');
   };

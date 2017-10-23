@@ -32,6 +32,10 @@ function nuevoUsuario($http, $state) {
           detalles: 'Se ha creado un nuevo usuario',
           fecha: new Date()
         });
+        var n = new Notification('Usuarios', {
+          body: 'Se ha creado un nuevo usuario',
+          icon: ICONAPP
+        });
         $state.go('app.success');
       }
     });
