@@ -80,6 +80,27 @@ angular
       label: 'Eliminar Planes'
     }
   })
+  .state('app.components.crm', {
+    url: '/CRM',
+    templateUrl: 'views/CRM/home.html',
+    ncyBreadcrumb: {
+      label: 'CRM'
+    }
+  })
+  .state('app.components.usuariosRegistrados', {
+    url: '/CRM/usuarios',
+    templateUrl: 'views/CRM/usuarios.html',
+    ncyBreadcrumb: {
+      label: 'Usuarios registrados'
+    }
+  })
+  .state('app.components.tickets', {
+    url: '/CRM/tickets',
+    templateUrl: 'views/CRM/tickets.html',
+    ncyBreadcrumb: {
+      label: 'Tickets'
+    }
+  })
   .state('app.forms', {
     url: '/forms',
     templateUrl: 'views/forms.html',

@@ -4,7 +4,6 @@
             <li class="nav-item">
                 <a class="nav-link" ui-sref-active="active" ui-sref="app.main"><i class="icon-speedometer"></i> Panel administrativo</a>
             </li>
-
             <li class="divider"></li>
             <li class="nav-title">
                 Menu de Opciones
@@ -20,8 +19,13 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" ui-sref-active="active" ui-sref="app.widgets"><i class="fa fa-envelope-o"></i> CRM</a>
+            <li class="nav-item nav-dropdown" ng-class="{open: $state.includes('app.components')}">
+                <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.components')}" href="#"><i class="fa fa-users"></i>CRM</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.components.crm"><i class="fa fa-folder-open"></i> Abrir</a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item nav-dropdown" ng-class="{open: $state.includes('app.icons')}">
                 <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.icons')}" href="#"></i><i class="fa fa-volume-control-phone"></i>Planes, equipos y telefonias</a>

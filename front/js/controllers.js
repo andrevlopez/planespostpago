@@ -3,7 +3,8 @@ angular
 .module('app')
 .controller('panel', ['$http', '$state','$rootScope', panel]);
 
-const URLBASE = 'https://planespostpago.herokuapp.com';
+//const URLBASE = 'https://planespostpago.herokuapp.com';
+const URLBASE = 'http://localhost:5000';
 const ICONAPP = '../../img/icon.png';
 var socket = io('localhost:5000');
 

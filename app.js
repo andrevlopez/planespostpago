@@ -59,6 +59,7 @@ require('./routes/solicitudes')(app, connection);
 require('./routes/permisos')(app, connection);
 require('./routes/planes')(app, connection);
 require('./routes/notificaciones')(app, connection);
+require('./routes/clientes')(app, connection);
 
 var debug = require('debug')('demo:server');
 

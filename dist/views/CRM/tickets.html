@@ -1,0 +1,22 @@
+<div ng-controller="crm as crm">
+	<table class="table">
+		<thead class="thead-default">
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Direccion</th>
+				<th>Numero Telefonico</th>
+				<th>Correo Electronico</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in crm.tickets">
+				<td>{{item.nombre}}</td>
+				<td>{{item.apellido}}</td>
+				<td>{{item.direccion}}</td>
+				<td>{{item.telefono}}</td>
+				<td>{{item.email}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

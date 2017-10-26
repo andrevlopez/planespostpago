@@ -1,0 +1,26 @@
+<div ng-controller="crm as crm">
+	<table class="table">
+		<thead class="thead-default">
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Correo</th>
+				<th>Plan Actual</th>
+				<th>Fecha de inicio del Plan</th>
+				<th>Fecha de Vencimiento del Plan</th>
+				<th>Tiempo de Contrato</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in crm.listaClientes">
+				<td>{{item.nombre}}</td>
+				<td>{{item.apellido}}</td>
+				<td>{{item.email}}</td>
+				<td>{{item.planActual}}</td>
+				<td>{{item.fechaInicioPlan}}</td>
+				<td>{{item.fechaVencimientoPlan}}</td>
+				<td>{{item.tipoContrato}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
