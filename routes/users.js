@@ -10,7 +10,7 @@ module.exports = (app, con) => {
       if (err) {
         res.send(err);
       }
-      row.length>0?res.send(true):res.send(false);
+      row.length>0?res.send({ok:true, access: row[0].cargo}):res.send(false);
     });
   });
 

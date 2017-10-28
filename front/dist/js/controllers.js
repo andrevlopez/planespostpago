@@ -1,14 +1,14 @@
 // controller.js
 angular
 .module('app')
-.controller('panel', ['$http', '$state','$rootScope', panel]);
+.controller('panel', ['$http', '$state', panel]);
 
-//const URLBASE = 'https://planespostpago.herokuapp.com';
-const URLBASE = 'http://localhost:5000';
+const URLBASE = 'https://planespostpago.herokuapp.com';
+//const URLBASE = 'http://localhost:5000';
 const ICONAPP = '../../img/icon.png';
-var socket = io('localhost:5000');
+var socket = io(URLBASE);
 
-function panel($http, $state) {
+function panel($http, $state, $rootScope) {
 	var vm = this;
 	vm.edit = [];
   vm.editPlan = [];

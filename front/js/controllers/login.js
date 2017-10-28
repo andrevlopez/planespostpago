@@ -14,6 +14,7 @@ function login($http, $state) {
   	}).then(result => {
       if (result.data) {
       	sessionStorage.setItem('session', true);
+        sessionStorage.setItem('access', result.data.access);
       	$state.go('app.main');
       } else {
       	vm.ingresa = `Credenciales inválidas`;	

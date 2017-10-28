@@ -1,3 +1,19 @@
+var accessUser = {
+  'call-center': [
+    'app.components.crm', 
+    'app.components.listaUsuarios',
+    'app.components.nuevoUsuario',
+    'app.components.editarUsuario',
+    'app.components.eliminarUsuario',
+    'app.components.usuariosRegistrados'],
+  'supervisor': [
+    'app.components.listaUsuarios',
+    'app.components.nuevoUsuario',
+    'app.components.editarUsuario',
+    'app.components.eliminarUsuario',
+    'app.components.usuariosRegistrados']
+  };
+
 angular
 .module('app')
 .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
@@ -29,6 +45,17 @@ angular
     templateUrl: 'views/panel/listaUsuarios.html',
     ncyBreadcrumb: {
       label: 'Lista de Usuarios'
+    },
+    onEnter: $state => {
+    const session = sessionStorage.getItem('access');
+    setTimeout(() => {
+      if (session in accessUser) {
+        const props = accessUser[session];
+        if (props.includes($state.$current.name)) {
+          $state.go('app.components.access');
+        }
+      }
+    }, 500);
     }
   })
   .state('app.components.nuevoUsuario', {
@@ -36,6 +63,17 @@ angular
     templateUrl: 'views/panel/nuevoUsuario.html',
     ncyBreadcrumb: {
       label: 'Nuevo Usuario'
+    },
+    onEnter: $state => {
+    const session = sessionStorage.getItem('access');
+    setTimeout(() => {
+      if (session in accessUser) {
+        const props = accessUser[session];
+        if (props.includes($state.$current.name)) {
+          $state.go('app.components.access');
+        }
+      }
+    }, 500);
     }
   })
   .state('app.components.editarUsuario', {
@@ -43,6 +81,17 @@ angular
     templateUrl: 'views/panel/editarUsuario.html',
     ncyBreadcrumb: {
       label: 'Editar Usuario'
+    },
+    onEnter: $state => {
+    const session = sessionStorage.getItem('access');
+    setTimeout(() => {
+      if (session in accessUser) {
+        const props = accessUser[session];
+        if (props.includes($state.$current.name)) {
+          $state.go('app.components.access');
+        }
+      }
+    }, 500);
     }
   })
   .state('app.components.eliminarUsuario', {
@@ -50,6 +99,17 @@ angular
     templateUrl: 'views/panel/eliminarUsuario.html',
     ncyBreadcrumb: {
       label: 'Eliminar Usuario'
+    },
+    onEnter: $state => {
+    const session = sessionStorage.getItem('access');
+    setTimeout(() => {
+      if (session in accessUser) {
+        const props = accessUser[session];
+        if (props.includes($state.$current.name)) {
+          $state.go('app.components.access');
+        }
+      }
+    }, 500);
     }
   })
   .state('app.components.nuevoPlan', {
@@ -85,6 +145,17 @@ angular
     templateUrl: 'views/CRM/home.html',
     ncyBreadcrumb: {
       label: 'CRM'
+    },
+    onEnter: $state => {
+    const session = sessionStorage.getItem('access');
+    setTimeout(() => {
+      if (session in accessUser) {
+        const props = accessUser[session];
+        if (props.includes($state.$current.name)) {
+          $state.go('app.components.access');
+        }
+      }
+    }, 500);
     }
   })
   .state('app.components.usuariosRegistrados', {
@@ -92,11 +163,29 @@ angular
     templateUrl: 'views/CRM/usuarios.html',
     ncyBreadcrumb: {
       label: 'Usuarios registrados'
+    },
+    onEnter: $state => {
+    const session = sessionStorage.getItem('access');
+    setTimeout(() => {
+      if (session in accessUser) {
+        const props = accessUser[session];
+        if (props.includes($state.$current.name)) {
+          $state.go('app.components.access');
+        }
+      }
+    }, 500);
     }
   })
   .state('app.components.tickets', {
     url: '/CRM/tickets',
     templateUrl: 'views/CRM/tickets.html',
+    ncyBreadcrumb: {
+      label: 'Tickets'
+    }
+  })
+  .state('app.components.access', {
+    url: '/access',
+    templateUrl: 'views/common/access.html',
     ncyBreadcrumb: {
       label: 'Tickets'
     }
