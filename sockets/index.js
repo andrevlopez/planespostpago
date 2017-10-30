@@ -13,7 +13,7 @@ module.exports = (io,con) => {
       	 }
         });
       console.log('que fue pues');
-      socket.emit('broadcast-notification');
+      socket.broadcast.emit('broadcast-notification');
   	 });
   });
 }  
