@@ -12,6 +12,7 @@ module.exports = (io,con) => {
       		fecha: body.fecha
       	 }
         });
+      console.log('que fue pues');
       socket.emit('broadcast-notification');
   	 });
   });
