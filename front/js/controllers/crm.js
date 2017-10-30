@@ -1,7 +1,7 @@
 // controller.js
 angular
 .module('app')
-.controller('crm', [crm]);
+.controller('crm', ['$http',crm]);
 
 function crm($http) {
   let vm = this;
