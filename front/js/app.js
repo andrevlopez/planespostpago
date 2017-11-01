@@ -28,4 +28,7 @@ angular
   });
   $rootScope.$state = $state;
   return $rootScope.$stateParams = $stateParams;
-}]);
+}])
+.run(function($http) {
+  $http.defaults.headers.common.Authorization = 'Bearer 6247b4a3978dc0533b193b802160e98a5e6b2b4504ca711aa8158ec169404fae';
+});;
