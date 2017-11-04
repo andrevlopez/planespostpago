@@ -63,6 +63,10 @@ angular
     url: '/login',
     templateUrl: 'views/pages/login.html'
   })
+  .state('recovery', {
+    url: '/recuperar',
+    templateUrl: 'views/pages/recovery.html'
+  })
   .state('app.error', {
     url: '/error',
     templateUrl: 'views/pages/error.html',

@@ -7,7 +7,6 @@ function login($http, $state) {
   let vm = this;
   vm.ingresa = `Ingresa ahora`;
   vm.send = () => {
-  	console.log('click');
   	$http.post(URLBASE + '/login', {
       usuario:vm.username,
       password:vm.password

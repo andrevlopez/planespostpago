@@ -3,7 +3,7 @@ angular
 .module('app')
 .controller('crm', ['$http',crm]);
 
-const URLTICKETS = `https://zammad.zonngo.com/api/v1/users`;
+const URLTICKETS = `https://zammad.zonngo.com/api/v1/ticket_articles`;
 
 function crm($http) {
   let vm = this;
@@ -15,19 +15,21 @@ function crm($http) {
   }
 
   function getTickets() {
-  	$http.get(URLTICKETS, {
-  		headers: {
-  			'Content-type': 'application/json'
-  		}
-  	})
-  	.then(response => {
-  	  console.log('lentamente');
-  	  console.log(response);
-      vm.listaTickets = response.data;
-  	})
-  	.then(error => {
-  		console.log(error);
-  	});
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization','Basic Y2VzYXJvZHJpZ3VlejRAZ21haWwuY29tOnpvbm5nbw==');
+    myHeaders.append('Content-Type','application/json');
+  	fetch(URLTICKETS, {
+      method: 'GET',
+      headers: myHeaders
+    })
+    .then(response => {
+      response.json().then(function(data) {
+        vm.tickets = data;
+      });
+    })
+    .then(error => {
+      console.log(error);
+    });
   }
   getClients();
   getTickets();

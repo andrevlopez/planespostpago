@@ -2,20 +2,24 @@
 	<table class="table">
 		<thead class="thead-default">
 			<tr>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Direccion</th>
-				<th>Numero Telefonico</th>
-				<th>Correo Electronico</th>
+				<th>Ticket #</th>
+				<th>Cliente</th>
+				<th>Grupo</th>
+				<th>Título</th>
+				<th>Mensaje</th>
+				<th>Fecha creación</th>
+				<th>Acción</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="item in crm.tickets">
-				<td>{{item.nombre}}</td>
-				<td>{{item.apellido}}</td>
-				<td>{{item.direccion}}</td>
-				<td>{{item.telefono}}</td>
-				<td>{{item.email}}</td>
+				<td>{{item.ticket_id}}</td>
+				<td>{{item.from}}</td>
+				<td>{{item.to}}</td>
+				<td>{{item.subject}}</td>
+				<td>{{item.body}}</td>
+				<td>{{item.created_at}}</td>
+				<td><button class="btn btn-primary"><a href="https://zammad.zonngo.com/#ticket/zoom/{{item.ticket_id}}"  class="text-white" target="_blank">Abrir más detalles</a></button></td>
 			</tr>
 		</tbody>
 	</table>
